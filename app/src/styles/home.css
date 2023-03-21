@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(252,252,252);
+    background: linear-gradient(180deg, rgba(252,252,252,1) 0%, rgba(93,185,236,1) 0%, rgba(90,177,236,1) 0%, rgba(179,187,193,1) 0%, rgba(118,192,230,1) 99%, rgba(140,190,217,1) 100%, rgba(140,196,217,1) 100%, rgba(100,205,241,1) 100%, rgba(156,198,174,1) 100%);
+    font-family: 'Mukta', sans-serif;
+}
+
+.d-none{
+    display: none;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(16, 16, 255, 0.733);
+    height: 10vh;
+    color: white;
+}
+
+.navbar-nav {
+    width: 60%;
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.navbar-nav>li>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.searcher{
+    width: 40%;
+    position: relative;
+}
+
+.searcher > input{
+    width: 80%;
+    outline: none;
+    padding: 5px;
+}
+
+
+.cities-list{
+    width: 80%;
+    height: 20vh;
+    position: absolute;
+    top: 70%;
+    list-style: none;
+    padding: 0;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.cities-list li{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.cities-list li:hover{
+    background-color: rgba(16, 16, 255, 0.733);
+    color: white;
+}
+
+.cities-list li > a{
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size:1rem;
+    padding: 10px;
+}
+
+.search-button{
+    position: absolute;
+    top: 50%;
+    right: 43%;
+    transform: translateY(-50%);
+    z-index: 1;
+    color: #8f8d8d;
+    cursor: pointer;
+
+}

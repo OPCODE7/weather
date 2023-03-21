@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
+    <link rel="shortcut icon" href="app/public/assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="app/src/styles/home.css">
+    <link rel="stylesheet" href="app/src/styles/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li><a href="#">Hoy</a></li>
+                <li><a href="#">Por hora</a></li>
+                <li><a href="">10 dias</a>
+                </li>
+                <li><a href="#">Fin de semana</a></li>
+                <li><a href="#">Mensual</a></li>
+            </ul>
+            <div class="searcher">
+                <input type="search" placeholder="Buscar por nombre de ciudad" id="search">
+                <span class="search-button fas fa-search"></span>
+                <ul class="cities-list d-none">
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="today-data">
+            <div class="date-info">
+                <span>fecha</span>
+                <span>hora</span>
+            </div>
+            <div class="today-weather-general-info">
+                <img src="" alt="icon-weather">
+                <div class="termic-sensations">
+                </div>
+            </div>
+        </section>
+        <section class="today-data-totally-info">
+
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="app/src/pages/home/home.js" type="module"></script>
 </body>
+
 </html>
