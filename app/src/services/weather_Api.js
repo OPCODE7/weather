@@ -5,7 +5,7 @@ export default class weatherApi{
     }
 
     fetchData(parameters,result){
-        fetch(`${this.url}${parameters[0]},${parameters[1]}&appid=${this.apiKey}`)
+        fetch(`${this.url}${parameters[0]},${parameters[1]}&appid=${this.apiKey}&units=metric`)
         .then(response => response.json())
         .then(data => result(data))
         .catch(err => result(err.message));
