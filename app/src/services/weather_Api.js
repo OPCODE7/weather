@@ -1,15 +1,14 @@
-export class weatherApi{
-    static key= "1cd917a7c30f93df8a72cc744800691c";
-    constructor(url){
+export default class weatherApi{
+    constructor(url,key){
         this.apiKey= key;
         this.url= url;
     }
 
-    fetchData(parameters){
-        fetch(this.url+parameters+this.key)
+    fetchData(parameters,result){
+        fetch(`${this.url}${parameters[0]},${parameters[1]}&appid=${this.apiKey}`)
         .then(response => response.json())
-        .then(data => data)
-        .catch(err => err);
+        .then(data => result(data))
+        .catch(err => result(err.message));
     }
 
 }

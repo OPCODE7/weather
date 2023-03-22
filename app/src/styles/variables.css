@@ -1,1 +1,8 @@
-
+:root{
+    /* Color Palette */
+    --very-dark-blue: #0A2647;
+    --dark-blue: #144272;
+    --blue: #205295;
+    --soft-blue: #2C74B3;
+    --white: #fff;
+}
