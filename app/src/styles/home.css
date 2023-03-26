@@ -25,10 +25,12 @@ header,main,footer{
     width: 100%;
 }
 
-
-.d-none{
-    display: none;
+.widgets-weather > section{
+    position: relative;
 }
+
+
+
 
 .navbar {
     display: flex;
@@ -86,6 +88,7 @@ header,main,footer{
     background-color: var(--white);
     overflow-y: scroll;
     border-radius: 5px;
+    z-index: 1;
 }
 
 .cities-list li{
@@ -114,7 +117,6 @@ header,main,footer{
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
-    z-index: 1;
     color: var(--dark-blue);
     cursor: pointer;
 
@@ -171,6 +173,60 @@ header,main,footer{
     padding: 0 2rem;
 }
 
+.opacity{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--very-dark-blue-opacity);
+    z-index: 2;
+}
+
+.modal{
+    width: 40%;
+    height: 40%;
+    background-color: var(--very-dark-blue);
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+}
+
+.loader{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--soft-blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader > img{
+    width: 90px;
+    height: 90px;
+    animation: loader-animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes loader-animation {
+    0%{
+        transform: translateY(15%);
+    }
+    50%{
+        transform: translateY(-15%);
+    }
+    100%{
+        transform: translateY(15%);
+    }
+}
 
 
 footer{
@@ -182,6 +238,10 @@ footer{
     justify-content: center;
     align-items: center;
     align-self: flex-end;
+}
+
+.d-none{
+    display: none;
 }
 
 @media(min-width: 765px){

@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <div class="opacity d-none"></div>
+    <div class="modal d-none">
+        <p id="message"></p>
+    </div>
     <header>
         <nav class="navbar">
             <a class="logo" href="index.html">
@@ -21,7 +25,7 @@
                 <i class="fa-solid fa-cloud"></i>
             </a>
             <div class="searcher">
-                <input type="search" placeholder="Buscar por nombre de ciudad" id="search">
+                <input type="search" placeholder="Search for name of city" id="search">
                 <span class="search-button fas fa-search"></span>
                 <ul class="cities-list d-none">
                 </ul>
@@ -77,14 +81,19 @@
             <p id="title-widget">Wind</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like sea-level">
-            <img src="app/public/assets/icons/sea_level.png" alt="sea-level-icon">
-            <p id="title-widget">Sea level</p>
-            <span id="fact-weather"></span>
-        </section>
         <section class="widget-totally-info feels-like clouds">
             <img src="app/public/assets/icons/cloud.png" alt="cloud-icon">
             <p id="title-widget">Clouds</p>
+            <span id="fact-weather"></span>
+        </section>
+        <section class="widget-totally-info feels-like clouds">
+            <img src="app/public/assets/icons/sunrise.png" alt="sunrise-icon">
+            <p id="title-widget">Sunrise</p>
+            <span id="fact-weather"></span>
+        </section>
+        <section class="widget-totally-info feels-like clouds">
+            <img src="app/public/assets/icons/sunset.png" alt="sunset-icon">
+            <p id="title-widget">Sunset</p>
             <span id="fact-weather"></span>
         </section>
     </main>
