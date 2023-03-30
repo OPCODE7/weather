@@ -182,9 +182,11 @@ header,main,footer{
 }
 
 .modal{
+    position: relative;
     width: 40%;
     height: 40%;
-    background-color: var(--very-dark-blue);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,6 +198,25 @@ header,main,footer{
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 5px;
+    color: var(--very-dark-blue);
+}
+
+.modal-close-button{
+    border: none;
+    background-color: var(--very-dark-blue);
+    color: white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modal-close-button:hover{
+    transform: rotate(90deg);
+    transition: .5s;
 }
 
 .loader{

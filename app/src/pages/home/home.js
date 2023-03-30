@@ -10,7 +10,20 @@ const $searcherBar = d.querySelector("#search");
 
 let helper = new Helper();
 let geoLocation = new GeoLocation();
+let dataCities2;
 
+d.addEventListener("DOMContentLoaded", e => {
+    let dataCities = fetch("app/src/utils/city_list.json");
+    dataCities2 = fetch("app/src/utils/city_list.json");
+    dataCities
+        .then(response => response.json())
+        .then(data => {
+            let randomIndex = Math.floor(Math.random() * data.length);
+            let city = data[randomIndex];
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.name},${city.country}&appid=`;
+            getData(url);
+        });
+});
 
 
 
@@ -47,7 +60,8 @@ d.addEventListener("click", e => {
         let cities;
         if (value.length > 0) {
             $citiesListComponent.classList.remove("d-none");
-            fetch("app/src/utils/city_list.json")
+
+            dataCities2
                 .then(response => response.json())
                 .then(data => {
                     cities = data.filter(el => value.toLowerCase().includes(el.name.toLowerCase()));
@@ -101,13 +115,18 @@ d.addEventListener("click", e => {
         }
     });
 
+    if (e.target.matches(".modal-close-button")) {
+        $modal.classList.add("d-none");
+        $opacity.classList.add("d-none");
+    }
+
 
 });
 
 function getData(_url) {
     d.querySelectorAll(".loader").forEach(loader => loader.classList.remove("d-none"));
 
-    let weather = new weatherApi(_url, "1cd917a7c30f93df8a72cc744800691c", "&unit=metric");
+    let weather = new weatherApi(_url, "1cd917a7c30f93df8a72cc744800691c", "&units=metric");
 
     const $cityName = d.querySelector(".city-data"),
         $currentDate = d.querySelector(".current-date"),
