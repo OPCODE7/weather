@@ -187,6 +187,11 @@ header,main,footer{
     width: 40%;
     height: 40%;
     background-color: var(--very-dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
     z-index: 3;
     position: absolute;
     top: 50%;

@@ -18,23 +18,7 @@ export default class Helper {
         return `${hours}:${minutos}${format}`;
     }
 
-    geoLocation() {
-        const options = {
-            enabledHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        };
-
-        const success = (position) => {
-            let coords = position.coords;
-            console.log(coords.latitude)
-            console.log(coords.longitude)
-        }
-        const error = (err) => {
-            console.log(err.code,err.message)
-        }
-        navigator.geolocation.getCurrentPosition(success, error, options);
-    }
+    
 }
 
 
