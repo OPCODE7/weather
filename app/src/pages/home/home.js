@@ -28,15 +28,12 @@ $searcherBar.addEventListener("focus", e => {
 });
 
 
-
 d.querySelectorAll(".widgets-weather > section").forEach(section => {
     const $loader = d.createElement("div");
     $loader.classList.add("loader");
     $loader.innerHTML = `<img src="app/public/assets/images/cloud_rain_loader.png" alt="loader-image">`
     section.insertAdjacentElement("beforeend", $loader);
 })
-
-
 
 
 
@@ -130,10 +127,10 @@ function getData(_url) {
                 d.querySelectorAll(".loader").forEach(loader => loader.classList.add("d-none"));
             }, 2000);
             let weatherMain = weatherData.main;
-            let millisecondsSunrise = weatherData.sys.sunrise;
-            let millisecondsSunset = weatherData.sys.sunset;
-            let timeSunrise = helper.convertMillisecondsToHourAndMinutes(millisecondsSunrise, "am");
-            let timeSunset = helper.convertMillisecondsToHourAndMinutes(millisecondsSunset, "pm");
+            let timeStampSunrise = weatherData.sys.sunrise;
+            let timeStampSunset = weatherData.sys.sunset;
+            let timeSunrise = helper.convertMillisecondsToHourAndMinutes(timeStampSunrise, "am");
+            let timeSunset = helper.convertMillisecondsToHourAndMinutes(timeStampSunset, "pm");
 
 
             let fullWeatherData = [`${weatherMain.feels_like}° C`, `${weatherMain.temp_min}° C/${weatherMain.temp_max}° C`, `${weatherMain.pressure} hPa`, `${weatherMain.humidity} %`, weatherData.visibility, `${weatherData.wind.speed} m/s`, `${weatherData.clouds.all} %`, timeSunrise, timeSunset]

@@ -7,7 +7,6 @@ export default class GeoLocation {
         };
 
         const success = (position) => {
-
             done(position.coords)
         }
 

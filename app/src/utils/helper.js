@@ -9,16 +9,16 @@ export default class Helper {
         return bool;
     }
 
-    convertMillisecondsToHourAndMinutes(milliseconds, format) {
-        let hours = milliseconds / (1000 * 60 * 60);
-        milliseconds -= hours * 60 * 1000;
-        let minutos = milliseconds / (1000 * 60);
-        console.log(hours, minutos)
+    convertMillisecondsToHourAndMinutes(unixTimestamp, format) {
+        let date = new Date(unixTimestamp * 1000);
 
-        return `${hours}:${minutos}${format}`;
+        let hours = date.getUTCHours();
+
+        let minutes = date.getUTCMinutes();
+        return `${hours}:${minutes} ${format}`;
     }
 
-    
+
 }
 
 
