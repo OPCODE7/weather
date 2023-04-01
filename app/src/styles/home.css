@@ -216,7 +216,7 @@ header,main,footer{
 
 .modal-close-button:hover{
     transform: rotate(90deg);
-    transition: .5s;
+    transition: .3s;
 }
 
 .loader{

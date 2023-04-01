@@ -18,8 +18,15 @@ export default class Helper {
         return `${hours}:${minutes} ${format}`;
     }
 
+    getDate(dt, timezone) {
+        const utc_seconds = parseInt(dt, 10) + parseInt(timezone, 10);
+        const utc_milliseconds = utc_seconds * 1000;
+        const local_date = new Date(utc_milliseconds).toUTCString();
+        return local_date;
+    }
 
 }
+
 
 
 

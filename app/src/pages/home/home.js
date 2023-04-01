@@ -10,21 +10,24 @@ const $searcherBar = d.querySelector("#search");
 
 let helper = new Helper();
 let geoLocation = new GeoLocation();
-let dataCities2;
+let dataCitiesClone;
+
+const getCloneResponse = (data) => {
+    dataCitiesClone = data;
+}
 
 d.addEventListener("DOMContentLoaded", e => {
     let dataCities = fetch("app/src/utils/city_list.json");
-    dataCities2 = fetch("app/src/utils/city_list.json");
     dataCities
         .then(response => response.json())
         .then(data => {
+            getCloneResponse(data);
             let randomIndex = Math.floor(Math.random() * data.length);
             let city = data[randomIndex];
             let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.name},${city.country}&appid=`;
             getData(url);
         });
 });
-
 
 
 $searcherBar.addEventListener("focus", e => {
@@ -48,9 +51,8 @@ d.querySelectorAll(".widgets-weather > section").forEach(section => {
     section.insertAdjacentElement("beforeend", $loader);
 })
 
-
-
 d.addEventListener("click", e => {
+
     if (e.target === $searcher) {
         $citiesListComponent.querySelectorAll("li").forEach(el => {
             if (el.children[0].id !== "geolocation-data") $citiesListComponent.remove(el);
@@ -61,37 +63,28 @@ d.addEventListener("click", e => {
         if (value.length > 0) {
             $citiesListComponent.classList.remove("d-none");
 
-            dataCities2
-                .then(response => response.json())
-                .then(data => {
-                    cities = data.filter(el => value.toLowerCase().includes(el.name.toLowerCase()));
-                    if (cities.length > 0 && !helper.sanitizeInput(value)) {
-                        cities.forEach(city => {
-                            const $li = document.createElement("li"), $a = document.createElement("a");
-                            $a.href = "#";
-                            $a.id = "city-data";
-                            $li.append($a);
-                            $a.textContent = `${city.name}-${city.country}`;
-                            $fragment.appendChild($li);
-                        });
-                    } else {
-                        const $li = document.createElement("li"), $a = document.createElement("a");
-                        $a.href = "#";
-                        $a.id = "not-found";
-                        $li.append($a);
-                        $a.textContent = `No se encontraron resultados`;
-                        $fragment.appendChild($li);
-                    }
-
-                    if ($fragment.querySelectorAll("li").length > 0)
-                        $citiesListComponent.appendChild($fragment);
-
-                })
-                .catch(err => {
-                    $opacity.classList.remove("d-none");
-                    $modal.classList.remove("d-none");
-                    $modal.children[0].textContent = err.message;
+            dataCitiesClone
+            cities = dataCitiesClone.filter(el => value.toLowerCase().includes(el.name.toLowerCase()));
+            if (cities.length > 0 && !helper.sanitizeInput(value)) {
+                cities.forEach(city => {
+                    const $li = document.createElement("li"), $a = document.createElement("a");
+                    $a.href = "#";
+                    $a.id = "city-data";
+                    $li.append($a);
+                    $a.textContent = `${city.name}-${city.country}`;
+                    $fragment.appendChild($li);
                 });
+            } else {
+                const $li = document.createElement("li"), $a = document.createElement("a");
+                $a.href = "#";
+                $a.id = "not-found";
+                $li.append($a);
+                $a.textContent = `No se encontraron resultados`;
+                $fragment.appendChild($li);
+            }
+
+            if ($fragment.querySelectorAll("li").length > 0)
+                $citiesListComponent.appendChild($fragment);
         }
 
     }
@@ -152,16 +145,15 @@ function getData(_url) {
             let timeSunset = helper.convertMillisecondsToHourAndMinutes(timeStampSunset, "pm");
 
 
-            let fullWeatherData = [`${weatherMain.feels_like}° C`, `${weatherMain.temp_min}° C/${weatherMain.temp_max}° C`, `${weatherMain.pressure} hPa`, `${weatherMain.humidity} %`, weatherData.visibility, `${weatherData.wind.speed} m/s`, `${weatherData.clouds.all} %`, timeSunrise, timeSunset]
-            let today = new Date();
+            let fullWeatherData = [`${weatherMain.feels_like}° C`, `${weatherMain.temp_min}° C / ${weatherMain.temp_max}° C`, `${weatherMain.pressure} hPa`, `${weatherMain.humidity} %`, weatherData.visibility, `${weatherData.wind.speed} m/s`, `${weatherData.clouds.all} %`, timeSunrise, timeSunset]
             const $factWeather = d.querySelectorAll("#fact-weather");
 
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            let now = today.toLocaleString('en-US', options);
-            let time = today.toLocaleTimeString();
-            $currentTime.textContent = time;
+            let localDate= helper.getDate(weatherData.dt,weatherData.timezone);
+            
+
+            $currentTime.textContent = localDate.split(' ').at(-2);
             $cityName.textContent = weatherData.name;
-            $currentDate.textContent = now;
+            $currentDate.textContent= localDate.split(' ').splice(0,4).join(' ');
             $temp.textContent = parseInt(weatherMain.temp) + "°C";
             $mainWeather.textContent = weatherData.weather[0].main;
             $description.textContent = weatherData.weather[0].description;
