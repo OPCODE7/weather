@@ -25,6 +25,37 @@ export default class Helper {
         return local_date;
     }
 
+    setBackground(body,idIcon){
+        if(idIcon==="01d"){
+            body.style.backgroundImage= `url("app/public/assets/images/clear-sky.jpg")`;
+        }else if(idIcon==="01n"){
+            body.style.backgroundImage= `url("app/public/assets/images/clear-night.jpg")`;
+        }else if(idIcon==="02d"){
+            body.style.backgroundImage= `url("app/public/assets/images/few-clouds.jpg")`;
+        }else if(idIcon==="02n"){
+            body.style.backgroundImage= `url("app/public/assets/images/few-clouds.jpg")`;
+        }else if(idIcon==="03d"){
+            body.style.backgroundImage= `url("app/public/assets/images/scattered-clouds.jpg")`;
+        }else if(idIcon==="03n"){
+            body.style.backgroundImage= `url("app/public/assets/images/scattered-clouds.jpg")`;
+        }else if(idIcon==="04d"){
+            body.style.backgroundImage= `url("app/public/assets/images/broken-clouds.jpg")`;
+        }else if(idIcon==="04n"){
+            body.style.backgroundImage= `url("app/public/assets/images/broken-clouds.jpg")`;
+        }else if(idIcon==="9d" ||idIcon==="9n" || idIcon==="10d" || idIcon==="10n"){
+            body.style.backgroundImage= `url("app/public/assets/images/rain.avif")`;
+
+        }else if(idIcon==="11d" || idIcon==="11n"){
+            body.style.backgroundImage= `url("app/public/assets/images/thunder-storm.avif")`;
+        }else if(idIcon==="13d" || idIcon==="13n"){
+            body.style.backgroundImage= `url("app/public/assets/images/snow.avif")`;
+            
+        }else if(idIcon==="50d" || idIcon==="50n"){
+            body.style.backgroundImage= `url("app/public/assets/images/mist.avif")`;
+        }
+       
+    }
+
 }
 
 

@@ -135,6 +135,7 @@ function getData(_url) {
     weather.fetchData()
         .then(response => response.json())
         .then(weatherData => {
+
             setTimeout(() => {
                 d.querySelectorAll(".loader").forEach(loader => loader.classList.add("d-none"));
             }, 2000);
@@ -162,6 +163,8 @@ function getData(_url) {
             $factWeather.forEach((fact, index) => {
                 fact.textContent = fullWeatherData[index];
             });
+
+            helper.setBackground(d.body,weatherData.weather[0].icon);
         })
         .catch(err => {
             $opacity.classList.remove("d-none");

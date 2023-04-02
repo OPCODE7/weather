@@ -8,8 +8,9 @@
 }
 
 body {
-    background: rgb(252,252,252);
-    background: linear-gradient(180deg, rgba(252,252,252,1) 0%, rgba(93,185,236,1) 0%, rgba(90,177,236,1) 0%, rgba(179,187,193,1) 0%, rgba(118,192,230,1) 99%, rgba(140,190,217,1) 100%, rgba(140,196,217,1) 100%, rgba(100,205,241,1) 100%, rgba(156,198,174,1) 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     font-family: 'Merriweather Sans', sans-serif;
     font-weight: 400;
     min-height: 100vh;
