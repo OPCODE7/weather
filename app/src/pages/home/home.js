@@ -3,7 +3,7 @@ import Helper from "../../utils/helper.js";
 import GeoLocation from "../../services/geoLocationApi.js";
 
 const d = document;
-const $citiesListComponent = d.querySelector(".cities-list");
+const $citiesListComponent = d.querySelector(".cities-list"), $notFoundComponent = d.getElementById("not-found").parentElement;
 const $searcher = d.querySelector(".search-button"), $fragment = d.createDocumentFragment();
 const $modal = d.querySelector(".modal"), $opacity = d.querySelector(".opacity");
 const $searcherBar = d.querySelector("#search");
@@ -31,16 +31,7 @@ d.addEventListener("DOMContentLoaded", e => {
 
 
 $searcherBar.addEventListener("focus", e => {
-    $citiesListComponent.querySelectorAll("li > a").forEach(a => {
-        if (a.id === "geolocation-data") $citiesListComponent.removeChild(a.parentElement);
-    });
     $citiesListComponent.classList.remove("d-none");
-    const $li = document.createElement("li"), $a = document.createElement("a");
-    $a.href = "#";
-    $a.id = "geolocation-data";
-    $li.append($a);
-    $a.textContent = `Use your current location`;
-    $citiesListComponent.prepend($li);
 });
 
 
@@ -54,10 +45,11 @@ d.querySelectorAll(".widgets-weather > section").forEach(section => {
 d.addEventListener("click", e => {
 
     if (e.target === $searcher) {
-        $citiesListComponent.querySelectorAll("li").forEach(el => {
-            if (el.children[0].id !== "geolocation-data") $citiesListComponent.remove(el);
+        $citiesListComponent.querySelectorAll("a").forEach(a => {
+            if (a.id === "city-data") $citiesListComponent.removeChild(a.parentElement);
         }
         );
+        $notFoundComponent.classList.add("d-none");
         let value = d.querySelector("#search").value.trim();
         let cities;
         if (value.length > 0) {
@@ -75,12 +67,7 @@ d.addEventListener("click", e => {
                     $fragment.appendChild($li);
                 });
             } else {
-                const $li = document.createElement("li"), $a = document.createElement("a");
-                $a.href = "#";
-                $a.id = "not-found";
-                $li.append($a);
-                $a.textContent = `No se encontraron resultados`;
-                $fragment.appendChild($li);
+                $notFoundComponent.classList.remove("d-none");
             }
 
             if ($fragment.querySelectorAll("li").length > 0)
@@ -96,6 +83,7 @@ d.addEventListener("click", e => {
                 let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityData[0]},${cityData[1]}&appid=`;
 
                 getData(url);
+
             }
             if (el.id === "geolocation-data") {
                 let url;
@@ -146,15 +134,15 @@ function getData(_url) {
             let timeSunset = helper.convertMillisecondsToHourAndMinutes(timeStampSunset, "pm");
 
 
-            let fullWeatherData = [`${weatherMain.feels_like}° C`, `${weatherMain.temp_min}° C / ${weatherMain.temp_max}° C`, `${weatherMain.pressure} hPa`, `${weatherMain.humidity} %`, weatherData.visibility, `${weatherData.wind.speed} m/s`, `${weatherData.clouds.all} %`, timeSunrise, timeSunset]
+            let fullWeatherData = [`${weatherMain.feels_like}° C`, `${weatherMain.temp_min}° C / ${weatherMain.temp_max}° C`, `${weatherMain.pressure} hPa`, `${weatherMain.humidity} %`, weatherData.visibility, `${weatherData.wind.speed} m/s`, `${weatherData.clouds.all} %`, timeSunrise, timeSunset];
             const $factWeather = d.querySelectorAll("#fact-weather");
 
-            let localDate= helper.getDate(weatherData.dt,weatherData.timezone);
-            
+            let localDate = helper.getDate(weatherData.dt, weatherData.timezone);
+
 
             $currentTime.textContent = localDate.split(' ').at(-2);
             $cityName.textContent = weatherData.name;
-            $currentDate.textContent= localDate.split(' ').splice(0,4).join(' ');
+            $currentDate.textContent = localDate.split(' ').splice(0, 4).join(' ');
             $temp.textContent = parseInt(weatherMain.temp) + "°C";
             $mainWeather.textContent = weatherData.weather[0].main;
             $description.textContent = weatherData.weather[0].description;
@@ -164,7 +152,7 @@ function getData(_url) {
                 fact.textContent = fullWeatherData[index];
             });
 
-            helper.setBackground(d.body,weatherData.weather[0].icon);
+            helper.setBackground(d.body, weatherData.weather[0].icon);
         })
         .catch(err => {
             $opacity.classList.remove("d-none");
