@@ -51,6 +51,14 @@ export default class Helper {
 
     }
 
+    showErrorMessage(modal,opacity,errorMessage){
+        const $modal= document.querySelector(".modal");
+        document.querySelector(".opacity").classList.remove("d-none");
+
+        $modal.classList.remove("d-none");
+        $modal.children[0].textContent= errorMessage;
+    }
+
 }
 
 

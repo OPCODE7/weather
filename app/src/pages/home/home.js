@@ -41,7 +41,7 @@ d.querySelectorAll(".widgets-weather").forEach(section => {
 })
 
 d.addEventListener("click", e => {
-    if(e.target!==$searcher && e.target!==$searcherBar){
+    if (e.target !== $searcher && e.target !== $searcherBar) {
         $citiesListComponent.classList.add("d-none")
     }
 
@@ -91,8 +91,10 @@ d.addEventListener("click", e => {
                 let url;
 
                 geoLocation.getLocation((coords) => {
+
                     url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=`;
                     getData(url);
+
                 })
             }
         }
@@ -157,9 +159,7 @@ function getData(_url) {
             helper.setBackground(d.body, weatherData.weather[0].icon);
         })
         .catch(err => {
-            $opacity.classList.remove("d-none");
-            $modal.classList.remove("d-none");
-            $modal.children[0].textContent = err.message;
+            helper.showErrorMessage(".modal",".opacity",err.message);
         })
 
 }
