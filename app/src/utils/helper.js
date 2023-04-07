@@ -25,36 +25,30 @@ export default class Helper {
         return local_date;
     }
 
-    setBackground(body,idIcon){
-        //refactor con idea de midudev
-        if(idIcon==="01d"){
-            body.style.backgroundImage= `url("app/public/assets/images/clear-sky.jpg")`;
-        }else if(idIcon==="01n"){
-            body.style.backgroundImage= `url("app/public/assets/images/clear-night.png")`;
-        }else if(idIcon==="02d"){
-            body.style.backgroundImage= `url("app/public/assets/images/few-clouds.jpg")`;
-        }else if(idIcon==="02n"){
-            body.style.backgroundImage= `url("app/public/assets/images/few-clouds.jpg")`;
-        }else if(idIcon==="03d"){
-            body.style.backgroundImage= `url("app/public/assets/images/scattered-clouds.jpg")`;
-        }else if(idIcon==="03n"){
-            body.style.backgroundImage= `url("app/public/assets/images/scattered-clouds.jpg")`;
-        }else if(idIcon==="04d"){
-            body.style.backgroundImage= `url("app/public/assets/images/broken-clouds.jpg")`;
-        }else if(idIcon==="04n"){
-            body.style.backgroundImage= `url("app/public/assets/images/broken-clouds.jpg")`;
-        }else if(idIcon==="9d" ||idIcon==="9n" || idIcon==="10d" || idIcon==="10n"){
-            body.style.backgroundImage= `url("app/public/assets/images/rain.avif")`;
+    setBackground(body, idIcon) {
+        const backgrounds = {
+            "01d": `url("app/public/assets/images/clear-sky.jpg")`,
+            "01n": `url("app/public/assets/images/clear-night.png")`,
+            "02d": `url("app/public/assets/images/few-clouds.jpg")`,
+            "02n": `url("app/public/assets/images/few-clouds-night.avif")`,
+            "03d": `url("app/public/assets/images/scattered-clouds.jpg")`,
+            "03n": `url("app/public/assets/images/scattered-clouds.jpg")`,
+            "04d": `url("app/public/assets/images/broken-clouds.jpg")`,
+            "04n": `url("app/public/assets/images/broken-clouds.jpg")`,
+            "9d": `url("app/public/assets/images/rain.avif")`,
+            "9n": `url("app/public/assets/images/rain.avif")`,
+            "10d": `url("app/public/assets/images/rain.avif")`,
+            "10n": `url("app/public/assets/images/rain.avif")`,
+            "11d": `url("app/public/assets/images/thunder-storm.avif")`,
+            "11n": `url("app/public/assets/images/thunder-storm.avif")`,
+            "13d": `url("app/public/assets/images/snow.png")`,
+            "13n": `url("app/public/assets/images/snow.png")`,
+            "50d": `url("app/public/assets/images/mist.avif")`,
+            "50n": `url("app/public/assets/images/mist.avif")`
+        };
 
-        }else if(idIcon==="11d" || idIcon==="11n"){
-            body.style.backgroundImage= `url("app/public/assets/images/thunder-storm.avif")`;
-        }else if(idIcon==="13d" || idIcon==="13n"){
-            body.style.backgroundImage= `url("app/public/assets/images/snow.png")`;
-            
-        }else if(idIcon==="50d" || idIcon==="50n"){
-            body.style.backgroundImage= `url("app/public/assets/images/mist.avif")`;
-        }
-       
+        body.style.backgroundImage= backgrounds[idIcon];
+
     }
 
 }

@@ -30,9 +30,7 @@ d.addEventListener("DOMContentLoaded", e => {
 });
 
 
-$searcherBar.addEventListener("focus", e => {
-    $citiesListComponent.classList.remove("d-none");
-});
+$searcherBar.addEventListener("focus", e => $citiesListComponent.classList.remove("d-none"));
 
 
 d.querySelectorAll(".widgets-weather").forEach(section => {
@@ -145,7 +143,7 @@ function getData(_url) {
 
 
             $currentTime.textContent = localDate.split(' ').at(-2);
-            $cityName.textContent = weatherData.name;
+            $cityName.textContent = `${weatherData.name}-${weatherData.sys.country}`;
             $currentDate.textContent = localDate.split(' ').splice(0, 4).join(' ');
             $temp.textContent = parseInt(weatherMain.temp) + "°C";
             $mainWeather.textContent = weatherData.weather[0].main;
