@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;800&display=swap');
 @import url("./variables.css");
 
-::after,::before,*{
+/* GENERAL STYLES */
+::after,
+::before,
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
 body {
+    background-color: #a5c4d6;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -17,17 +21,17 @@ body {
     color: var(--white);
 }
 
-header{
+/* HEADER SECTION STYLES */
+
+header {
     height: 10vh;
 }
 
 
-header,main,footer{
+header,
+main,
+footer {
     width: 100%;
-}
-
-.widgets-weather > section{
-    position: relative;
 }
 
 
@@ -41,26 +45,27 @@ header,main,footer{
     color: var(--white);
 }
 
-.logo{
+.navbar-logo {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: var(--white);
 }
 
-.title-navbar{
+.navbar-title {
     font-size: .9rem;
     font-weight: 800;
     margin-right: 5px;
 }
 
 
-.searcher{
+.navbar-searcher {
     width: 55%;
     position: relative;
+
 }
 
-.searcher > input{
+.navbar-searcher-input {
     width: 100%;
     outline: none;
     padding: 5px;
@@ -71,16 +76,16 @@ header,main,footer{
     font-weight: 500;
 }
 
-.searcher > input:hover{
+.navbar-searcher-input:hover {
     border: 2px solid var(--soft-blue);
 }
 
 
-.cities-list{
+.navbar-searcher-cities-list {
     width: 100%;
     height: 20vh;
     position: absolute;
-    bottom: -9rem;
+    top: 130%;
     left: 0;
     list-style: none;
     padding: 0;
@@ -90,13 +95,13 @@ header,main,footer{
     z-index: 1;
 }
 
-.cities-list li{
+.navbar-searcher-city {
     width: 100%;
     border-bottom: 1px solid #ccc;
 }
 
-.cities-list li > a{
-    display: block;
+.navbar-searcher-city > a {
+    display: block; 
     height: 100%;
     text-decoration: none;
     color: var(--dark-blue);
@@ -104,14 +109,15 @@ header,main,footer{
     font-size: .9rem;
     padding: 10px;
 }
-.cities-list li > a:hover{
+
+.navbar-searcher-city>a:hover {
     background-color: var(--very-dark-blue);
     color: white;
     transition: .5s;
 }
 
 
-.search-button{
+.navbar-searcher-button {
     position: absolute;
     top: 50%;
     right: 5%;
@@ -121,14 +127,20 @@ header,main,footer{
 
 }
 
-.widgets-weather{
+/* MAIN SECTION STYLES */
+
+.widgets {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 3vh;
     padding: 1rem;
 }
 
-.today-weather-general-info{
+.widgets-weather {
+    position: relative;
+}
+
+.widgets-weather-general-info {
     background-color: var(--very-dark-blue);
     grid-column: 1/3;
     height: 20vh;
@@ -137,7 +149,36 @@ header,main,footer{
     flex-direction: column;
 }
 
-.widget-totally-info{
+.widgets-weather-header-general {
+    width: 100%;
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--soft-blue);
+    font-size: .8rem;
+}
+
+.widgets-weather-header-general {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+.widgets-weather-content-general {
+    flex: 1 0 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.widgets-weather-temp {
+    margin: 10px 0;
+}
+
+
+.widget-weather-totally-info {
     background-color: var(--very-dark-blue);
     border-radius: 5px;
     height: 20vh;
@@ -149,30 +190,7 @@ header,main,footer{
 }
 
 
-.header-weather-general{
-    width: 100%;
-    flex: 0 0 20%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: var(--soft-blue);
-    font-size: .8rem;
-}
-
-.header-weather-general{
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-
-.content-weather-general{
-    flex: 1 0 20%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
-
-.opacity{
+.opacity {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -182,7 +200,7 @@ header,main,footer{
     z-index: 2;
 }
 
-.modal{
+.modal {
     position: relative;
     width: 40%;
     height: 40%;
@@ -197,12 +215,12 @@ header,main,footer{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 5px;
     color: var(--very-dark-blue);
 }
 
-.modal-close-button{
+.modal-close-button {
     border: none;
     background-color: var(--very-dark-blue);
     color: white;
@@ -215,12 +233,12 @@ header,main,footer{
     cursor: pointer;
 }
 
-.modal-close-button:hover{
+.modal-close-button:hover {
     transform: rotate(90deg);
     transition: .3s;
 }
 
-.loader{
+.loader {
     width: 100%;
     height: 100%;
     border-radius: inherit;
@@ -233,7 +251,7 @@ header,main,footer{
     align-items: center;
 }
 
-.loader > img{
+.loader>img {
     width: 90px;
     height: 90px;
     animation: loader-animation;
@@ -241,20 +259,13 @@ header,main,footer{
     animation-iteration-count: infinite;
 }
 
-@keyframes loader-animation {
-    0%{
-        transform: translateY(15%);
-    }
-    50%{
-        transform: translateY(-15%);
-    }
-    100%{
-        transform: translateY(15%);
-    }
+.d-none {
+    display: none;
 }
 
+/*  FOOTER SECTION STYLES */
 
-footer{
+footer {
     width: 100%;
     height: 10vh;
     background-color: var(--very-dark-blue);
@@ -265,36 +276,49 @@ footer{
     align-self: flex-end;
 }
 
-.d-none{
-    display: none;
-}
 
-@media(min-width: 765px){
-    .searcher{
+
+@media(min-width: 765px) {
+    .navbar-searcher {
         width: 30%;
     }
 
-    .widgets-weather{
-        grid-template-columns: repeat(3,1fr);
+    .widgets {
+        grid-template-columns: repeat(3, 1fr);
         padding: 1rem 4rem;
     }
 
-    .today-weather-general-info{
+    .widgets-weather-general-info {
         grid-column: 1/4;
         height: 30vh;
     }
 
-    .title-navbar{
+    .navbar-logo-title {
         font-size: 1.2rem;
     }
 
-    .searcher > input{
+    .navbar-searcher-input {
         font-size: .9rem;
     }
 }
 
-@media(min-width: 1024px){
-    .widgets-weather{
+@media(min-width: 1024px) {
+    .widgets {
         padding: 1rem 10rem;
+    }
+}
+
+
+@keyframes loader-animation {
+    0% {
+        transform: translateY(15%);
+    }
+
+    50% {
+        transform: translateY(-15%);
+    }
+
+    100% {
+        transform: translateY(15%);
     }
 }

@@ -8,6 +8,7 @@
     <title>Weather</title>
     <link rel="shortcut icon" href="app/public/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="app/src/styles/home.css">
+    <link rel="stylesheet" href="app/src/styles/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,84 +22,85 @@
     </div>
     <header>
         <nav class="navbar">
-            <a class="logo" href="index.html">
-                <h1 class="title-navbar">Current Weather</h1>
-                <i class="fa-solid fa-cloud"></i>
+            <a class="navbar-logo" href="index.html">
+                <h1 class="navbar-title">Current Weather</h1>
+                <i class="fa-solid fa-cloud navbar-icon"></i>
             </a>
-            <div class="searcher">
-                <input type="search" placeholder="Search for name of city" id="search">
-                <span class="search-button fas fa-search"></span>
-                <ul class="cities-list d-none">
-                    <li>
+            <div class="navbar-searcher">
+                <input type="search" placeholder="Search for name of city" id="search" class="navbar-searcher-input">
+                <span class="navbar-searcher-button fas fa-search "></span>
+                <ul class="navbar-searcher-cities-list d-none">
+                    <li class="navbar-searcher-city">
                         <a href="#" id="geolocation-data">Use your current location</a>
                     </li>
-                    <li class="d-none">
+                    <li class="d-none navbar-searcher-city">
                         <a href="#" id="not-found">No se encontraron resultados</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="widgets-weather">
-        <section class="today-weather-general-info">
-            <div class="header-weather-general">
-                <span class="city-data"></span>
-                <span class="current-date"></span>
-                <span class="current-time"></span>
+    <main class="widgets">
+        <section class="widgets-weather widgets-weather-general-info">
+            <div class="widgets-weather-header-general">
+                <span class="widgets-weather-city-data"></span>
+                <span class="widgets-weather-current-date"></span>
+                <span class="widgets-weather-current-time"></span>
             </div>
-            <div class="content-weather-general">
-                <div class="content-current-weather">
-                    <span class="main"></span>
-                    <h4 class="temp"></h4>
-                    <span class="description"></span>
+            <div class="widgets-weather-content-general">
+                <div class="widgets-weather-current">
+                    <span class="widgets-weather-main"></span>
+                    <h4 class="widgets-weather-temp"></h4>
+                    <span class="widgets-weather-description"></span>
                 </div>
-                <div class="image-current-weather">
-                    <img src="" alt="" class="icon-weather">
+                <div class="widgets-weather-current-image">
+                    <img src="" alt="" class="widgets-weather-current-icon">
                 </div>
             </div>
         </section>
-        <section class="widget-totally-info feels-like">
+        
+        <section class="widgets-weather widget-weather-totally-info feels-like">
             <img src="app/public/assets/icons/temp.png" alt="temp-icon">
             <p id="title-widget">Feels like</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info temp-min-max">
+        <section class="widgets-weather widget-weather-totally-info temp-min-max">
             <img src="app/public/assets/icons/temp_min_max.png" alt="temp-min-max-icon">
             <p id="title-widget">Temp min/max</p>
             <span id="fact-weather"></span>
         </section>
 
-        <section class="widget-totally-info feels-like pressure">
+        <section class="widgets-weather widget-weather-totally-info pressure">
             <img src="app/public/assets/icons/pressure.png" alt="pressure-icon">
             <p id="title-widget">Pressure</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like humidity">
+        <section class="widgets-weather widget-weather-totally-info  humidity">
             <img src="app/public/assets/icons/humidity.png" alt="humidity-icon">
             <p id="title-widget">Humidity</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like visibility">
+        <section class="widgets-weather widget-weather-totally-info  visibility">
             <img src="app/public/assets/icons/visibility.png" alt="visibility-icon">
             <p id="title-widget">Visibility</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like wind">
+        <section class="widgets-weather widget-weather-totally-info  wind">
             <img src="app/public/assets/icons/wind.png" alt="wind-icon">
             <p id="title-widget">Wind</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like clouds">
+        <section class="widgets-weather widget-weather-totally-info  clouds">
             <img src="app/public/assets/icons/cloud.png" alt="cloud-icon">
             <p id="title-widget">Clouds</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like clouds">
+        <section class="widgets-weather widget-weather-totally-info  clouds">
             <img src="app/public/assets/icons/sunrise.png" alt="sunrise-icon">
             <p id="title-widget">Sunrise</p>
             <span id="fact-weather"></span>
         </section>
-        <section class="widget-totally-info feels-like clouds">
+        <section class="widgets-weather widget-weather-totally-info  clouds">
             <img src="app/public/assets/icons/sunset.png" alt="sunset-icon">
             <p id="title-widget">Sunset</p>
             <span id="fact-weather"></span>

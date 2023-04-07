@@ -3,8 +3,8 @@ import Helper from "../../utils/helper.js";
 import GeoLocation from "../../services/geoLocationApi.js";
 
 const d = document;
-const $citiesListComponent = d.querySelector(".cities-list"), $notFoundComponent = d.getElementById("not-found").parentElement;
-const $searcher = d.querySelector(".search-button"), $fragment = d.createDocumentFragment();
+const $citiesListComponent = d.querySelector(".navbar-searcher-cities-list"), $notFoundComponent = d.getElementById("not-found").parentElement;
+const $searcher = d.querySelector(".navbar-searcher-button"), $fragment = d.createDocumentFragment();
 const $modal = d.querySelector(".modal"), $opacity = d.querySelector(".opacity");
 const $searcherBar = d.querySelector("#search");
 
@@ -35,7 +35,7 @@ $searcherBar.addEventListener("focus", e => {
 });
 
 
-d.querySelectorAll(".widgets-weather > section").forEach(section => {
+d.querySelectorAll(".widgets-weather").forEach(section => {
     const $loader = d.createElement("div");
     $loader.classList.add("loader");
     $loader.innerHTML = `<img src="app/public/assets/images/cloud_rain_loader.png" alt="loader-image">`
@@ -43,6 +43,9 @@ d.querySelectorAll(".widgets-weather > section").forEach(section => {
 })
 
 d.addEventListener("click", e => {
+    if(e.target!==$searcher && e.target!==$searcherBar){
+        $citiesListComponent.classList.add("d-none")
+    }
 
     if (e.target === $searcher) {
         $citiesListComponent.querySelectorAll("a").forEach(a => {
@@ -63,6 +66,7 @@ d.addEventListener("click", e => {
                     $a.href = "#";
                     $a.id = "city-data";
                     $li.append($a);
+                    $li.classList.add("navbar-searcher-city")
                     $a.textContent = `${city.name}-${city.country}`;
                     $fragment.appendChild($li);
                 });
@@ -109,13 +113,13 @@ function getData(_url) {
 
     let weather = new weatherApi(_url, "1cd917a7c30f93df8a72cc744800691c", "&units=metric");
 
-    const $cityName = d.querySelector(".city-data"),
-        $currentDate = d.querySelector(".current-date"),
-        $currentTime = d.querySelector(".current-time"),
-        $mainWeather = d.querySelector(".main"),
-        $temp = d.querySelector(".temp"),
-        $description = d.querySelector(".description"),
-        $imageWeather = d.querySelector(".icon-weather");
+    const $cityName = d.querySelector(".widgets-weather-city-data"),
+        $currentDate = d.querySelector(".widgets-weather-current-date"),
+        $currentTime = d.querySelector(".widgets-weather-current-time"),
+        $mainWeather = d.querySelector(".widgets-weather-main"),
+        $temp = d.querySelector(".widgets-weather-temp"),
+        $description = d.querySelector(".widgets-weather-description"),
+        $imageWeather = d.querySelector(".widgets-weather-current-icon");
 
 
 

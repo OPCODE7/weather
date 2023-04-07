@@ -26,10 +26,11 @@ export default class Helper {
     }
 
     setBackground(body,idIcon){
+        //refactor con idea de midudev
         if(idIcon==="01d"){
             body.style.backgroundImage= `url("app/public/assets/images/clear-sky.jpg")`;
         }else if(idIcon==="01n"){
-            body.style.backgroundImage= `url("app/public/assets/images/clear-night.jpg")`;
+            body.style.backgroundImage= `url("app/public/assets/images/clear-night.png")`;
         }else if(idIcon==="02d"){
             body.style.backgroundImage= `url("app/public/assets/images/few-clouds.jpg")`;
         }else if(idIcon==="02n"){
@@ -48,7 +49,7 @@ export default class Helper {
         }else if(idIcon==="11d" || idIcon==="11n"){
             body.style.backgroundImage= `url("app/public/assets/images/thunder-storm.avif")`;
         }else if(idIcon==="13d" || idIcon==="13n"){
-            body.style.backgroundImage= `url("app/public/assets/images/snow.avif")`;
+            body.style.backgroundImage= `url("app/public/assets/images/snow.png")`;
             
         }else if(idIcon==="50d" || idIcon==="50n"){
             body.style.backgroundImage= `url("app/public/assets/images/mist.avif")`;
